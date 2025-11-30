@@ -39,8 +39,8 @@ A complete e-commerce platform built with React (Frontend) and Laravel (Backend)
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
-   cd "depi project"
+   git clone https://github.com/ZerO708/Ecommerce-platform.git
+   cd Ecommerce-platform
    ```
 
 2. **Start the application**
