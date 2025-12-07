@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 import { WishlistProvider } from "./context/WishlistContext";
+import ErrorBoundary from "./components/ErrorBoundary";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Products from "./components/Products";
@@ -35,36 +36,38 @@ const Home = () => (
 
 const App = () => {
   return (
-    <WishlistProvider>
-      <CartProvider>
-        <Router>
-          <div>
-            <Routes>
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="/forgot-password" element={<ForgotPassword />} />
-              <Route path="/reset-password" element={<ResetPassword />} />
-              <Route path="*" element={
-                <>
-                  <Header />
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/cart" element={<Cart />} />
-                    <Route path="/checkout" element={<Checkout />} />
-                    <Route path="/order-success" element={<OrderSuccess />} />
-                    <Route path="/orders" element={<Orders />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/bills" element={<Bills />} />
-                    <Route path="/wishlist" element={<Wishlist />} />
-                  </Routes>
-                  <Footer />
-                </>
-              } />
-            </Routes>
-          </div>
-        </Router>
-      </CartProvider>
-    </WishlistProvider>
+    <ErrorBoundary>
+      <WishlistProvider>
+        <CartProvider>
+          <Router>
+            <div>
+              <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="/reset-password" element={<ResetPassword />} />
+                <Route path="*" element={
+                  <>
+                    <Header />
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/cart" element={<Cart />} />
+                      <Route path="/checkout" element={<Checkout />} />
+                      <Route path="/order-success" element={<OrderSuccess />} />
+                      <Route path="/orders" element={<Orders />} />
+                      <Route path="/profile" element={<Profile />} />
+                      <Route path="/bills" element={<Bills />} />
+                      <Route path="/wishlist" element={<Wishlist />} />
+                    </Routes>
+                    <Footer />
+                  </>
+                } />
+              </Routes>
+            </div>
+          </Router>
+        </CartProvider>
+      </WishlistProvider>
+    </ErrorBoundary>
   )
 }
 
